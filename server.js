@@ -47,7 +47,7 @@ app.post('/login', (req, res) => {
         refreshToken: data.body.refresh_token,
         expiresIn: data.body.expires_in
       })
-    }).catch(err => res.sendStatus(400))
+    }).catch(err => res.status(400).send(err))
 })
 
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}`))
