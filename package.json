@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pm2": "^5.2.2",
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "scripts": {
+    "start": "pm2 start server.js",
+    "restart": "pm2 restart server",
+    "stop": "pm2 stop server"
+  },
+  "name": "server",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Runify-Labs/Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Runify-Labs/Server/issues"
+  },
+  "homepage": "https://github.com/Runify-Labs/Server#readme"
+}
