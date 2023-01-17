@@ -1,5 +1,5 @@
 # Server
-##Deployment
+## Deployment
 Spin up 20.04 EC2 (micro is fine)
 ```
 sudo apt update
