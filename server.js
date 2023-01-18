@@ -1,11 +1,13 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node')
 require('dotenv').config();
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(express.static(path.join(__dirname, '../Front-end/dist')))
 
 app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken
@@ -32,7 +34,6 @@ app.post('/refresh', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  console.log('Login req.body', req.body)
   const code = req.body.code
   const spotfiyApi = new SpotifyWebApi({
     redirectUri: process.env.REDIRECTURI,
@@ -47,7 +48,11 @@ app.post('/login', (req, res) => {
         refreshToken: data.body.refresh_token,
         expiresIn: data.body.expires_in
       })
-    }).catch(err => res.status(400).send(err))
+    }).catch(err => {
+      console.log(err)
+      res.status(400).send(err)
+      return
+    })
 })
 
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}`))
